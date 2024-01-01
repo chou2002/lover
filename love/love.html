@@ -124,7 +124,7 @@
     $(window).on('load', function(event){
     $('body').removeClass('preloading');
     $('.loadingLove').delay(1000).fadeOut('fast');
-
+   
         
     function getHeart(e){
         let ele = document.createElement("div");
@@ -174,9 +174,9 @@
     }
 
     const inputField = document.getElementById('inputField');
-    const textToType = "quynhhhh";
+    const textToType = "Mít Cute";
     const typingSpeed = 100; // milliseconds per character
-
+    
     let charIndex = 0;
     function typeText() {
         if (charIndex < textToType.length) {
@@ -218,12 +218,13 @@
     // .textLetter text h2
     let indexText = 0;
     let textLetter = document.querySelector('.textLetter h2');
-    const textLetterH2 = "Hello cậu!!!";
     let timoutTextLetter;
+    let textHeading = ''
 
     function textCharLetter(){
-        if (indexText < textLetterH2.length) {
-            textLetter.textContent += textLetterH2[indexText];
+      
+        if (indexText < textHeading.length) {
+            textLetter.textContent += textHeading[indexText];
             indexText++;
             setTimeout(indexText, 100);
         }
@@ -246,6 +247,7 @@
     // chữ của thư bạn muốn gửi
     let indexTextContent = 0;
     let textLetterContent = document.querySelector('.contentLetter');
+  
     const textLetterP = "hello"
     let timoutTextLetterContent;
     function textCharLetterContent(){
@@ -278,6 +280,15 @@
     })
 
     document.querySelector(".buttonLove").addEventListener("click", function(){
+        // Muốn thêm chữ gì thì viết thêm vào cái dưới này. Nó ngẫu nhiên khi bấm vào thư
+        const textLetters = [
+        "Hello",
+        "Giữ gìn sức khỏe nha chị",
+        "Đừng làm đau bản thân nữa >.<",
+        "Chúc Mít ngủ ngon mơ đẹp nha",
+        ]; 
+        // thêm ở trên
+         let textLetterH2 = '';
         let timeout = setInterval(()=>{
             var letters = document.createElement("div");
             letters.className = "letters"
@@ -296,9 +307,12 @@
             },11000)
             document.querySelectorAll(".letters").forEach((item)=>{
                 item.addEventListener("click", function(){
-                    clearInterval(timeout)
+                    clearInterval(timeout)  
+                    textLetterH2 = textLetters[Math.floor(Math.random() * textLetters.length)];
+                    textHeading = textLetterH2
                     $(".wrapperLetterForm").fadeIn()
                     funcTimeoutLetter();
+                  
                     
                 })
             })
